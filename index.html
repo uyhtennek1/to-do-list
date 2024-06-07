@@ -13,37 +13,36 @@
     <header>
         <form>
             <div>
-                <label for="task">Task</label>
+                <label for="task-input">What is worrying you now?</label>
                 <input type="text" id="task-input">
             </div>
             <fieldset>
-                <legend>Priority</legend>
+                <legend>Stress level:</legend>
                 <div id="priority-radios">
-                    <input type="radio" id="high-priority" name="priority" value="high">
-                    <label for="high-priority">High</label>
-                    <input type="radio" id="medium-priority" name="priority" value="medium">
-                    <label for="medium-priority">Medium</label>
-                    <input type="radio" id="low-priority" name="priority" value="low">
-                    <label for="low-priority">Low
-                </div></label>
+                    <input type="radio" id="high-priority-radio" name="priority" value="high">
+                    <label for="high-priority-radio">High</label>
+                    <input type="radio" id="medium-priority-radio" name="priority" value="medium">
+                    <label for="medium-priority-radio">Medium</label>
+                    <input type="radio" id="low-priority-radio" name="priority" value="low">
+                    <label for="low-priority-radio">Low</label>
+                </div>
             </fieldset>
-            <div>
-                <button type="submit">Add</button>
-            </div>
+            <button type="submit">Add</button>
         </form>
     </header>
     <hr>
     <main>
-        <section>
-            <h2>Your stress level now and tomorrow</h2>
-            <article class="card">
-                <!-- Delete Icon, Text, Button -->
+        <section id="high-priority-tasks">
+            <h2>Suck these up immediately!</h2>
+            <article>
+                <button type="button"></button>
+                <p>Do the dishes</p>
             </article>
         </section>
-        <section>
+        <section id="medium-priority-tasks">
             <h2>Someone will blame you eventually for these</h2>
         </section>
-        <section>
+        <section id="low-priority-tasks">
             <h2>Things that always get forgotten to do</h2>
         </section>
     </main>
