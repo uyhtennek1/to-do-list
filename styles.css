@@ -1,0 +1,70 @@
+:root {
+    --text: #08120d;
+    --background: #f5faf7;
+    --primary: #62b77d;
+    --secondary: #a4d5d2;
+    --accent: #81b9c5;
+
+    font-family: Bahnschrift, 'DIN Alternate', 'Franklin Gothic Medium', 'Nimbus Sans Narrow', sans-serif-condensed, sans-serif;
+}
+
+body {
+    color: var(--text);
+    background-color: var(--background);
+    font-weight: 300;
+    width: 95%;
+    margin: auto;
+}
+
+hr {
+    border: 0.1px solid black;
+}
+
+h1 {
+    font-size: 3rem;
+    text-align: center;
+    margin: 20px 0;
+}
+
+form {
+    box-sizing: border-box;
+    width: 80%;
+    margin: 30px auto 5px auto;
+    padding: 20px;
+    border-radius: 10px;
+}
+
+#task-input {
+    box-sizing: border-box;
+    display: block;
+    width: 100%;
+    border: 1.5px solid black;
+    border-radius: 20px;
+    margin: 10px 0;
+    height: 2rem;
+    padding: 0 20px;
+    background-color: #ededed;
+}
+
+#priority-radios {
+    margin: 10px 0;
+}
+
+button[type="submit"] {
+    padding: 5px 20px;
+    border-radius: 20px;
+    border: none;
+    background-color: var(--primary);
+}
+
+main {
+    display: flex;
+}
+
+section {
+    flex: 1;
+}
+
+.card {
+    background-color: var(--primary);
+}
