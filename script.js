@@ -24,15 +24,25 @@ function addTaskToList(task, priority) {
 
     taskP.setAttribute('data-content', taskP.textContent = task);
     switch(priority) {
-        case 'high': highPriorityTaskList.appendChild(newTaskItem); break;
-        case 'medium': mediumPriorityTaskList.appendChild(newTaskItem); break;
-        case 'low': lowPriorityTaskList.appendChild(newTaskItem); break;
+        case 'high':
+            highPriorityTaskList.insertBefore(newTaskItem, highPriorityTaskList.firstElementChild.nextElementSibling);
+            break;
+        case 'medium': mediumPriorityTaskList.insertBefore(newTaskItem, mediumPriorityTaskList.firstElementChild.nextElementSibling); break;
+        case 'low': lowPriorityTaskList.insertBefore(newTaskItem, lowPriorityTaskList.firstElementChild.nextElementSibling); break;
     }
     newTaskItem.querySelector('button').addEventListener('click', function() {
-        this.parentElement.parentElement.removeChild(newTaskItem);
+        newTaskItem.classList.add('finished');
+        setTimeout(() => {
+            newTaskItem.parentElement.removeChild(newTaskItem);
+        }, 2500);
     });
+    newTaskItem.classList.add('new');
 
     newTaskItem.removeAttribute('hidden');
+
+    setTimeout(() => {
+        newTaskItem.classList.remove('new');
+    }, 1500);
 }
 
 // UI test

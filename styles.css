@@ -56,10 +56,10 @@ form>div label {
     display: block;
     width: 100%;
     border: 1.5px solid black;
-    border-radius: 20px;
+    border-radius: 1.2rem;
     margin: 10px 0;
     height: 2rem;
-    padding: 0 20px;
+    padding: 0 1.2rem;
     font-size: 1.3rem;
 }
 
@@ -148,10 +148,10 @@ form button[type="submit"]:active {
 }
 
 .task-item {
-    --container-height: 25px;
+    --container-height: 1.8rem;
 
     display: flex;
-    align-items: center;
+    align-items: start;
     gap: 8px;
     font-size: 1.2rem;
     line-height: var(--container-height);
@@ -160,6 +160,23 @@ form button[type="submit"]:active {
 
 .task-item[hidden] {
     display: none;
+}
+
+@keyframes remove-task {
+    from {
+        opacity: 1;
+    }
+
+    40% {
+        margin-bottom: 1rem;
+        max-height: 4rem;
+    }
+
+    to {
+        opacity: 0;
+        margin-bottom: 0;
+        max-height: 0;
+    }
 }
 
 .task-item button {
@@ -179,17 +196,29 @@ form button[type="submit"]:active {
 }
 
 .task-item button span {
-	font-size: 42px;
+	font-size: 3rem;
 	position: absolute;
-	left: -10px;
-	top: -12px;
+	left: -0.6rem;
+	top: -0.9rem;
+    overflow: hidden;
+    width: 0;
+}
+
+@keyframes check-task {
+    from {
+        width: 0;
+    }
+
+    to {
+        width: 3rem;
+    }
 }
 
 .task-item p {
     flex: 1;
     border-bottom: 1px solid black;
     margin: 0 4px;
-    min-height: 26px;
+    min-height: 2rem;
     position: relative;
     overflow: hidden;
 }
@@ -206,11 +235,49 @@ form button[type="submit"]:active {
     width: 100%;
     text-align: justify;
     pointer-events: none;
-    transform: translate(-100%);
+    transform: translateX(-100%);
+}
+
+@keyframes cross-task {
+    from {
+        transform: translateX(-100%);
+    }
+
+    to {
+        transform: translateX(0%);
+    }
+}
+
+.task-item.new {
+    animation-name: remove-task;
+    animation-duration: 0.7s;
+    animation-direction: reverse;
+}
+
+.task-item.finished {
+    animation-name: remove-task;
+    animation-duration: 1.2s;
+    animation-fill-mode: forwards;
+    animation-delay: 1s;
 }
 
 .task-item.finished button:hover {
     cursor: default;
+}
+
+.task-item.finished button span {
+    animation-name: check-task;
+    animation-duration: 1.2s;
+    animation-timing-function: ease-in;
+    animation-fill-mode: forwards;
+}
+
+.task-item.finished p::after {
+    animation-name: cross-task;
+    animation-duration: 1.5s;
+    animation-timing-function: ease-in-out;
+    animation-fill-mode: forwards;
+    animation-delay: 0.15s;
 }
 
 @media (max-width: 1200px) {
