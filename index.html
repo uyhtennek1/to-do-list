@@ -4,47 +4,59 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>To-Do-List</title>
+
     <link rel="stylesheet" href="assets/reset.css">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
+
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <h1>Things to Panic</h1>
-    <hr>
     <header>
-        <form>
-            <div>
-                <label for="task-input">What is worrying you now?</label>
-                <input type="text" id="task-input">
-            </div>
-            <fieldset>
-                <legend>Stress level:</legend>
-                <div id="priority-radios">
-                    <input type="radio" id="high-priority-radio" name="priority" value="high">
-                    <label for="high-priority-radio">High</label>
-                    <input type="radio" id="medium-priority-radio" name="priority" value="medium">
-                    <label for="medium-priority-radio">Medium</label>
-                    <input type="radio" id="low-priority-radio" name="priority" value="low">
-                    <label for="low-priority-radio">Low</label>
-                </div>
-            </fieldset>
-            <button type="submit">Add</button>
-        </form>
+        <h1>Things to <span>Panic</span></h1>
     </header>
     <hr>
     <main>
-        <section id="high-priority-tasks">
-            <h2>Suck these up immediately!</h2>
-            <article>
-                <button type="button"></button>
-                <p>Do the dishes</p>
+        <section>
+            <form>
+                <div>
+                    <label for="task-input">What is worrying you now?</label>
+                    <input type="text" id="task-input" autocomplete="off" name="task" required>
+                </div>
+                <fieldset>
+                    <legend>Stress level:</legend>
+                    <div id="priority-radios">
+                        <input type="radio" id="high-priority-radio" name="priority" value="high">
+                        <label for="high-priority-radio">High</label>
+                        <input type="radio" id="medium-priority-radio" name="priority" value="medium">
+                        <label for="medium-priority-radio">Medium</label>
+                        <input type="radio" id="low-priority-radio" name="priority" value="low" checked>
+                        <label for="low-priority-radio">Low</label>
+                    </div>
+                </fieldset>
+                <button type="submit">
+                    <span id="add-text">Add to list</span>
+                    <span class="material-symbols-outlined">add</span>
+                </button>
+            </form>
+        </section>
+        <section id="lists">
+            <article id="high-priority-tasks">
+                <h2>Suck these up immediately!</h2>
+            </article>
+            <article id="medium-priority-tasks">
+                <h2>Someone will blame you eventually for these:</h2>
+            </article>
+            <article id="low-priority-tasks">
+                <h2>Things that always got forgotten:</h2>
             </article>
         </section>
-        <section id="medium-priority-tasks">
-            <h2>Someone will blame you eventually for these</h2>
-        </section>
-        <section id="low-priority-tasks">
-            <h2>Things that always get forgotten to do</h2>
-        </section>
     </main>
+
+    <div class="task-item" hidden>
+        <button type="button"></button>
+        <p></p>
+    </div>
+
+    <script src="script.js"></script>
 </body>
 </html>

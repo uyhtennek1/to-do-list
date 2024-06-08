@@ -14,6 +14,7 @@ body {
     font-weight: 300;
     width: 95%;
     margin: auto;
+    padding-bottom: 10vh;
 }
 
 hr {
@@ -33,17 +34,21 @@ form {
     padding: 20px;
     border-radius: 10px;
     display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+form>div {
+    width: 100%;
+    display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
-    align-items: center;
+    align-items: end;
 }
 
-form div {
-    width: 100%;
-}
-
-form label[for="task-input"] {
+form>div label {
     font-size: 1.5rem;
+    margin-left: 10px;
 }
 
 #task-input {
@@ -58,47 +63,91 @@ form label[for="task-input"] {
     font-size: 1.3rem;
 }
 
+#task-input:user-invalid {
+    border: 1.5px solid red;
+}
+
 form fieldset {
     position: relative;
+    margin-top: 4px;
+    margin-left: 5px;
 }
 
 form fieldset legend {
     position: absolute;
+    top: 2px;
 }
 
 #priority-radios {
-    margin-left: 85px;
+    margin-left: 90px;
 }
 
-button[type="submit"] {
-    padding: 5px 20px;
-    border-radius: 20px;
-    border: none;
+form button[type="submit"] {
+    box-sizing: border-box;
     background-color: var(--primary);
+    color: white;
+    border: none;
+    height: 2.5rem;
+    border-radius: 2.5rem;
+    padding: 0 15px;
+    width: 200px;
+    margin-right: 5px;
+
+    font-size: 1.2rem;
+    display: inline-flex;
+    align-items: center;
+
+    border-bottom: 4px solid #538e66;
 }
 
-main {
+form button[type="submit"]:hover {
+    cursor: pointer;
+}
+
+form button[type="submit"]:active {
+	border-top: 3px solid #467956;
+	border-bottom: none;
+	background-color: #56a870;
+	color: #f2f2f2;
+}
+
+#add-text {
+    flex: 1;
+}
+
+#lists {
     display: flex;
     margin: auto;
     flex-wrap: wrap;
     padding: 0 10px;
-    min-height: 300px;
+    align-items: start;
+    justify-content: space-evenly;
 }
 
-section {
+#lists article {
     flex: 1;
     background-color: var(--secondary);
     padding: 15px;
     border-radius: 5px;
-    margin: 0 8px;
+    margin: 0 14px;
+    min-height: 200px;
+    max-width: 500px;
 }
 
-section h2 {
+#lists article h2 {
     font-size: 1.2rem;
-    height: 2rem;
+    height: 3.5rem;
 }
 
-article {
+#lists #high-priority-tasks {
+    background-color: #eabfbf;
+}
+
+#lists #medium-priority-tasks {
+    background-color: #f2f0cf;
+}
+
+.task-item {
     --container-height: 25px;
 
     display: flex;
@@ -106,23 +155,118 @@ article {
     gap: 8px;
     font-size: 1.2rem;
     line-height: var(--container-height);
+    margin-bottom: 1rem;
 }
 
-article button {
+.task-item[hidden] {
+    display: none;
+}
+
+.task-item button {
     box-sizing: border-box;
-    width: var(--container-height);
-    height: var(--container-height);
+    width: calc(var(--container-height) - 4px);
+    height: calc(var(--container-height) - 4px);
     background-color: transparent;
     border: 1.5px solid black;
     border-radius: 2px;
+    align-self: flex-start;
+    margin-top: 1px;
+    position: relative;
 }
 
-article button:hover {
+.task-item button:hover {
     cursor: pointer;
 }
 
-article p {
+.task-item button span {
+	font-size: 42px;
+	position: absolute;
+	left: -10px;
+	top: -12px;
+}
+
+.task-item p {
     flex: 1;
     border-bottom: 1px solid black;
-    padding: 0 4px;
+    margin: 0 4px;
+    min-height: 26px;
+    position: relative;
+    overflow: hidden;
+}
+
+.task-item p::after {
+    position: absolute;
+    top: 0;
+    left: 0;
+    content: attr(data-content);
+    color: transparent;
+    text-decoration: line-through;
+    text-decoration-thickness: 0.2rem;
+    text-decoration-color: var(--text);
+    width: 100%;
+    text-align: justify;
+    pointer-events: none;
+    transform: translate(-100%);
+}
+
+.task-item.finished button:hover {
+    cursor: default;
+}
+
+@media (max-width: 1200px) {
+    #lists {
+        display: block;
+    }
+
+    #lists article {
+        margin: 14px auto;
+    }
+}
+
+@media (max-width: 800px) {
+    form {
+        display: block;
+    }
+
+    form button[type="submit"] {
+        display: flex;
+        margin: 10px auto 0 auto;
+    }
+}
+
+@media (max-width: 500px) {
+    :root {
+        font-size: 3vw;
+    }
+
+    .material-symbols-outlined {
+        font-size: 100%;
+    }
+
+    form {
+        width: 100%;
+        margin: 1rem auto;
+        padding: 5px 20px;
+    }
+
+    #task-input {
+        margin: 0.5rem 0;
+    }
+
+    #priority-radios {
+        margin-left: 0;
+        margin-top: 1.2rem;
+    }
+
+    form button[type="submit"] {
+        width: 38vw;
+    }
+
+    #lists article {
+        margin: 10px auto;
+    }
+
+    .task-item p {
+        line-height: 1.5rem;
+    }
 }
