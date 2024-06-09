@@ -131,11 +131,12 @@ form button[type="submit"]:active {
     border-radius: 5px;
     margin: 0 14px;
     min-height: 200px;
-    max-width: 500px;
+    max-width: 600px;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 }
 
 #lists article h2 {
-    font-size: 1.2rem;
+    font-size: 1rem;
     height: 3.5rem;
 }
 
@@ -206,7 +207,7 @@ form button[type="submit"]:active {
 
 @keyframes check-task {
     from {
-        width: 0;
+        width: 0.6rem;
     }
 
     to {
@@ -215,6 +216,7 @@ form button[type="submit"]:active {
 }
 
 .task-item p {
+    box-sizing: border-box;
     flex: 1;
     border-bottom: 1px solid black;
     margin: 0 4px;
@@ -258,7 +260,7 @@ form button[type="submit"]:active {
     animation-name: remove-task;
     animation-duration: 1.2s;
     animation-fill-mode: forwards;
-    animation-delay: 1s;
+    animation-delay: 0.8s;
 }
 
 .task-item.finished button:hover {
@@ -267,17 +269,15 @@ form button[type="submit"]:active {
 
 .task-item.finished button span {
     animation-name: check-task;
-    animation-duration: 1.2s;
-    animation-timing-function: ease-in;
+    animation-duration: 0.8s;
     animation-fill-mode: forwards;
 }
 
 .task-item.finished p::after {
     animation-name: cross-task;
-    animation-duration: 1.5s;
+    animation-duration: 1.1s;
     animation-timing-function: ease-in-out;
     animation-fill-mode: forwards;
-    animation-delay: 0.15s;
 }
 
 @media (max-width: 1200px) {
