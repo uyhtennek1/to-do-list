@@ -9,6 +9,8 @@ class Task {
 }
 
 const taskForm = document.querySelector('form');
+const taskInputField = taskForm.querySelector('input[type="text"]');
+
 const taskItemPrefab = document.querySelector('.task-item');
 const highPriorityTaskList = document.querySelector('#lists #high-priority-tasks');
 const mediumPriorityTaskList = document.querySelector('#lists #medium-priority-tasks');
@@ -79,6 +81,7 @@ taskForm.addEventListener('submit', evt => {
 
     taskForm.reset();
     taskForm.querySelector(`input[type="radio"][value="${data.get('priority')}"]`).checked = true;
+    taskInputField.focus();
 });
 
 if (localStorage.getItem("tasks")) {
